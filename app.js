@@ -14,7 +14,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log(`Connected to ${process.env.MONGO_URL}...`);
+    console.log(`Connected to mongDb...`);
   });
 
 module.exports = app;
