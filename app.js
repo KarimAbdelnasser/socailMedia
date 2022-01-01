@@ -2,6 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
+app.get("/", (req, res) => {
+  res.send("Welcome to meta media");
+});
+
 require("dotenv").config();
 require("./startup/routes")(app);
 
