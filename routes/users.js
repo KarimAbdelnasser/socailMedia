@@ -34,7 +34,7 @@ router.post("/signUp", async (req, res) => {
   });
   const token = user.generateAuthToken();
   res.status(201).json({
-    message: `You have signed up successfully\n Your ID is = ${user._id}\n You can sign in from here --> http://localhost:${PORT}/users/user/${user._id}`,
+    message: `You have signed up successfully\n Your ID is = ${user._id}\n You can sign in from here --> https://meta-media.herokuapp.com/users/user/${user._id}`,
     token: token,
   });
 });
@@ -95,7 +95,7 @@ router.put("/changePass", auth, async (req, res) => {
   const compareNewPass = await bcrypt.compare(newPass, thisUser.password);
   if (!compareOldPass) {
     return res.send(
-      `wrong password!\nIf you can't remember the old password you can go to this link to get into your account==>http://localhost:${PORT}/users/forgetPass\n , You have to Know the email that you registered with!`
+      `wrong password!\nIf you can't remember the old password you can go to this link to get into your account==>https://meta-media.herokuapp.com/users/forgetPass\n , You have to Know the email that you registered with!`
     );
   }
   if (compareNewPass) {
@@ -169,7 +169,7 @@ router.post(
     res
       .status(201)
       .send(
-        `You have upload a profile picture to your account\nHere it is-->'http://localhost:${PORT}/${user.profilePic}'`
+        `You have upload a profile picture to your account\nHere it is-->'https://meta-media.herokuapp.com/${user.profilePic}'`
       );
   }
 );
@@ -232,7 +232,7 @@ router.put("/like/:postId", auth, async (req, res) => {
       postId: postId,
       likedBy: req.user._id,
       friendName: user.fullName,
-      msg: `Your friend '${user.fullName}' have liked your post ({ ${post.desc} }) , You can see this post by clicking here -->'http://localhost:${PORT}/users/myposts/1' with query --> type:like.`,
+      msg: `Your friend '${user.fullName}' have liked your post ({ ${post.desc} }) , You can see this post by clicking here -->'https://meta-media.herokuapp.com/users/myposts/1' with query --> type:like.`,
     };
     notification.like.push(form);
     await notification.save();
@@ -249,7 +249,7 @@ router.put("/like/:postId", auth, async (req, res) => {
           postId: postId,
           likedBy: req.user._id,
           friendName: user.fullName,
-          msg: `Your friend '${user.fullName}' have liked your post ({ ${post.desc} }),(${post.img}) , You can see your posts from here -->'http://localhost:${PORT}/users/notificationPost/1' with query --> type:like.`,
+          msg: `Your friend '${user.fullName}' have liked your post ({ ${post.desc} }),(${post.img}) , You can see your posts from here -->'https://meta-media.herokuapp.com/users/notificationPost/1' with query --> type:like.`,
         },
       ],
     });
@@ -292,7 +292,7 @@ router.put("/comment/:postId", auth, async (req, res) => {
       commentedBy: req.user._id,
       friendName: user.fullName,
       comBody: body,
-      msg: `Your friend '${user.fullName}' have commented on your post ({ ${post.desc} }),({${post.img}}), with this comment ({ ${body} }) , You can see your posts from here -->'http://localhost:${PORT}/users/myposts/1' with query --> type:comment.`,
+      msg: `Your friend '${user.fullName}' have commented on your post ({ ${post.desc} }),({${post.img}}), with this comment ({ ${body} }) , You can see your posts from here -->'https://meta-media.herokuapp.com/users/myposts/1' with query --> type:comment.`,
     };
     notification.comment.push(form);
     await notification.save((err) => {
@@ -310,7 +310,7 @@ router.put("/comment/:postId", auth, async (req, res) => {
           commentedBy: req.user._id,
           friendName: user.fullName,
           body: body,
-          msg: `Your friend '${user.fullName}' have commented on your post ({ ${post.desc} }),({${post.img}}), with this comment ({ ${body} }) , You can see your posts from here -->'http://localhost:${PORT}/users/notificationPost/1' with query --> type:comment.`,
+          msg: `Your friend '${user.fullName}' have commented on your post ({ ${post.desc} }),({${post.img}}), with this comment ({ ${body} }) , You can see your posts from here -->'https://meta-media.herokuapp.com/users/notificationPost/1' with query --> type:comment.`,
         },
       ],
     });

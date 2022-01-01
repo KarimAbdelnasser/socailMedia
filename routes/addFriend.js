@@ -19,7 +19,7 @@ router.get("/search/:email", auth, async (req, res) => {
   return res
     .status(200)
     .send(
-      `You can add '${user.email}' as a friend by clicking this URL-->http://localhost:${PORT}/users/addFriend/${user._id}`
+      `You can add '${user.email}' as a friend by clicking this URL-->https://meta-media.herokuapp.com/users/addFriend/${user._id}`
     );
 });
 
@@ -45,7 +45,7 @@ router.get("/querySearch/:key", auth, async (req, res) => {
       return res
         .status(200)
         .send(
-          `You can add '${user.email}' as a friend by clicking this URL-->http://localhost:${PORT}/users/addFriend/${user._id}`
+          `You can add '${user.email}' as a friend by clicking this URL-->https://meta-media.herokuapp.com/users/addFriend/${user._id}`
         );
     } else if (type == "city") {
       const user = await User.findOne({ city: value });
@@ -57,7 +57,7 @@ router.get("/querySearch/:key", auth, async (req, res) => {
       return res
         .status(200)
         .send(
-          `You can add '${user.email}' as a friend by clicking this URL-->http://localhost:${PORT}/users/addFriend/${user._id}`
+          `You can add '${user.email}' as a friend by clicking this URL-->https://meta-media.herokuapp.com/users/addFriend/${user._id}`
         );
     } else if (type == "currentJob") {
       const user = await User.findOne({ currentJob: value });
@@ -69,7 +69,7 @@ router.get("/querySearch/:key", auth, async (req, res) => {
       return res
         .status(200)
         .send(
-          `You can add '${user.email}' as a friend by clicking this URL-->http://localhost:${PORT}/users/addFriend/${user._id}`
+          `You can add '${user.email}' as a friend by clicking this URL-->https://meta-media.herokuapp.com/users/addFriend/${user._id}`
         );
     } else {
       const user = await User.findOne({ specialization: value });
@@ -81,7 +81,7 @@ router.get("/querySearch/:key", auth, async (req, res) => {
       return res
         .status(200)
         .send(
-          `You can add '${user.email}' as a friend by clicking this URL-->http://localhost:${PORT}/users/addFriend/${user._id}`
+          `You can add '${user.email}' as a friend by clicking this URL-->https://meta-media.herokuapp.com/users/addFriend/${user._id}`
         );
     }
   } else {
@@ -104,7 +104,7 @@ router.post("/addFriend/:user", auth, async (req, res) => {
     const form = {
       friendId: userId,
       friendName: user.fullName,
-      msg: `You have a friend request from '${user.fullName}', You can accept this request by clicking here -->'http://localhost:${PORT}/users/accept/1', If you want to reject this you can click here -->'http://localhost:${PORT}/users/reject/1'.`,
+      msg: `You have a friend request from '${user.fullName}', You can accept this request by clicking here -->'https://meta-media.herokuapp.com/users/accept/1', If you want to reject this you can click here -->'https://meta-media.herokuapp.com/users/reject/1'.`,
     };
     notification.add_friend.push(form);
     await notification.save();
@@ -116,7 +116,7 @@ router.post("/addFriend/:user", auth, async (req, res) => {
         {
           friendId: userId,
           friendName: user.fullName,
-          msg: `You have a friend request from '${user.fullName}', You can accept this request by clicking here -->'http://localhost:${PORT}/users/accept/1', If you want to reject this you can click here -->'http://localhost:${PORT}/users/reject/1'.`,
+          msg: `You have a friend request from '${user.fullName}', You can accept this request by clicking here -->'https://meta-media.herokuapp.com/users/accept/1', If you want to reject this you can click here -->'https://meta-media.herokuapp.com/users/reject/1'.`,
         },
       ],
     });
