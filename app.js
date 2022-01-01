@@ -10,7 +10,7 @@ require("dotenv").config();
 require("./startup/routes")(app);
 
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect(`${process.env.MONGO_URL}`, {
     useUnifiedTopology: true,
   })
   .then(() => {
